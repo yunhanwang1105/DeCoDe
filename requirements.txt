@@ -4,5 +4,6 @@ qwen-vl-utils
 PyYAML
 numpy
 opencv-python
+pillow
 tqdm
 wandb

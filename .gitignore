@@ -8,6 +8,7 @@ data/*
 !data/.gitkeep
 !data/README.md
 !data/extract_ucf_middle_frames.py
+!data/resize_arabicsign_lowres.py
 cache/*
 !cache/.gitkeep
 

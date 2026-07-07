@@ -21,11 +21,11 @@ Download the datasets from their original sources, then arrange or symlink them 
 | `aircraft` | [FGVC-Aircraft on Kaggle](https://www.kaggle.com/datasets/seryouxblaster764/fgvc-aircraft) | Data and split source; variant labels, 100 total classes. |
 | `ucf` | [UCF101 official download page](https://www.crcv.ucf.edu/data/UCF101.php); [UTD debias split/method](https://utd-project.github.io/) | Download UCF101 from the official page. UTD is the debias method/split source. You must run `data/extract_ucf_middle_frames.py` to extract one middle frame per video to `data/UCF101/UCF_frame/<video_id>.jpg` before evaluation. |
 | `cub` | [CUB-200-2011 official dataset](https://www.vision.caltech.edu/datasets/cub_200_2011/); [FRN split source](https://github.com/Tsingularity/FRN/tree/main) | Download data from the official CUB page; the repository link is only for the split. |
-| `domain` | [DomainNet official download page](https://ai.bu.edu/M3SDA/#dataset); [DFRFS split source](https://github.com/chenghao-ch94/DFRFS) | Download data from the official DomainNet page; the repository link is only for the split. Domains must be `clipart`, `infograph`, `painting`, `quickdraw`, and `sketch`. |
+| `domain` | [DomainNet official download page](https://ai.bu.edu/M3SDA/#dataset); [DFRFS split source](https://github.com/chenghao-ch94/DFRFS) | Download data from the official DomainNet page; the repository link is only for the split. Domains must be `clipart`, `infograph`, `painting`, `quickdraw`, `real`, and `sketch`. |
 | `industrial` | [Industrial Classification Data Set on Kaggle](https://www.kaggle.com/datasets/beschue/industrial-classification-data-set) | Use the test image folder under `IndustrialDataSet/Test_Dataset/images`. |
 | `yoga` | [Yoga Pose Image Classification Dataset on Kaggle](https://www.kaggle.com/datasets/shrutisaxena/yoga-pose-image-classification-dataset) | Keep class folders under `data/yoga`. |
 | `lego` | [Lego Brick Sorting - Image Recognition on Kaggle](https://www.kaggle.com/datasets/pacogarciam3/lego-brick-sorting-image-recognition) | Keep brick-type folders directly under `data/lego`. |
-| `arabicsign` | [RGB Arabic Alphabets Sign Language Dataset on Kaggle](https://www.kaggle.com/datasets/muhammadalbrham/rgb-arabic-alphabets-sign-language-dataset) | Keep sign-class folders directly under `data/ArabicSign`. |
+| `arabicsign` | [RGB Arabic Alphabets Sign Language Dataset on Kaggle](https://www.kaggle.com/datasets/muhammadalbrham/rgb-arabic-alphabets-sign-language-dataset) | Download the original dataset to `data/ArabicSign`, then run `data/resize_arabicsign_lowres.py` to create the resized copy. |
 | `hieroglyph` | [Egyptian Hieroglyphs: GlyphDataset on Kaggle](https://www.kaggle.com/datasets/ahmedsamir1598/glyphdataset) | Keep `Manual/Preprocessed/<source_folder>/<image>.png`. |
 | `dogs` | [Stanford Dogs Sanitised and Cropped 128x128 on Kaggle](https://www.kaggle.com/datasets/robbindg/stanford-dogs-sanitised-and-cropped-128-x-128?select=images) | Use the `images` folder as `data/dogs/images`. |
 | `butterfly` | [Butterfly & Moths Image Classification 100 species on Kaggle](https://www.kaggle.com/datasets/gpiosenka/butterfly-images40-species) | Evaluation paths use the `test/<CLASS>/<image>.jpg` split. |
@@ -117,7 +117,7 @@ The episode logs already contain the relative file names expected by the reader.
 
 ### ArabicSign
 
-ArabicSign uses one folder per sign class directly under `data/ArabicSign`.
+Download the original RGB ArabicSign dataset to `data/ArabicSign`. The original images should use one folder per sign class:
 
 ```text
 data/ArabicSign/
@@ -132,6 +132,27 @@ data/ArabicSign/
 │   └── Sad_257.jpg
 └── ...
 ```
+
+Then resize the original images to width 340 with the provided helper script:
+
+```bash
+python data/resize_arabicsign_lowres.py
+```
+
+This creates:
+
+```text
+data/ArabicSign_lowres/
+├── Ain/
+│   ├── Ain_105.jpg
+│   └── Ain_143.jpg
+├── Ghain/
+│   ├── Ghain_72.jpg
+│   └── Ghain_186.jpg
+└── ...
+```
+
+To evaluate on the resized images, either update the `arabicsign.images_path` entry in `configs/qwen3vl_decompose.yaml` to `data/ArabicSign_lowres`, or make `data/ArabicSign` point to the resized folder.
 
 Episode paths look like:
 
