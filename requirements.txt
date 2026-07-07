@@ -1,0 +1,8 @@
+torch==2.10.*
+transformers
+qwen-vl-utils
+PyYAML
+numpy
+opencv-python
+tqdm
+wandb

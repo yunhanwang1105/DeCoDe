@@ -1,0 +1,87 @@
+experiment:
+  name: qwen3vl_1shot_decompose
+  seed: 42
+  num_ways: 5
+  num_shots: 1
+  num_episodes: 200 # one episode corresponds to five queries 
+  max_new_tokens: 10
+  batch_size: 16
+  prompt_mode: decompose_semantic # or decompose_anonymous
+  use_domain_info: false
+  output_dir: episode_logs/runs
+
+model:
+  backend: qwen3vl
+  model_name_or_path: Qwen/Qwen3-VL-8B-Instruct
+  cache_dir: cache/qwen3-vl-8b-instruct
+  torch_dtype: auto
+  device_map: auto
+
+logging:
+  use_wandb: true
+  wandb_project: few-shot-qwen3vl-decode
+  run_name_prefix: decode_5way_1shot
+
+datasets:
+  mini:
+    images_path: data/miniimagenet
+    sampling_log: episode_logs/mini/5_way_1_shot_miniImagenet_sampling_log.json
+    domain_info:
+    resolve_mode: mixed_class_or_prefixed
+  cub:
+    images_path: data/CUB_200_2011/images
+    sampling_log: episode_logs/cub/5_way_1_shot_cub_sampling_log.json
+    domain_info: bird species
+    resolve_mode: class_subdir
+  dogs:
+    images_path: data/dogs/images
+    sampling_log: episode_logs/dogs/5_way_1_shot_dogs_sampling_log.json
+    domain_info: dog breed
+    resolve_mode: prefixed_or_flat
+  arabicsign:
+    images_path: data/ArabicSign
+    sampling_log: episode_logs/arabicsign/5_way_1_shot_arabicsign_sampling_log.json
+    domain_info: sign language
+    resolve_mode: prefixed_or_flat
+  yoga:
+    images_path: data/yoga
+    sampling_log: episode_logs/yoga/5_way_1_shot_yoga_sampling_log.json
+    domain_info: yoga pose
+    resolve_mode: mixed_class_or_prefixed
+  hieroglyph:
+    images_path: data/hieroglyphs
+    sampling_log: episode_logs/hieroglyph/5_way_1_shot_hieroglyph_sampling_log.json
+    domain_info: Egyptian hieroglyph
+    resolve_mode: prefixed_or_flat
+  ucf:
+    images_path: data/UCF101/UCF_frame
+    sampling_log: episode_logs/ucf/5_way_1_shot_ucf_sampling_log.json
+    domain_info: action category
+    resolve_mode: ucf_frame
+    support_key: sampled_vids_support
+    query_key: sampled_vids_query
+  aircraft:
+    images_path: data/fgvc-aircraft-2013b/data/images
+    sampling_log: episode_logs/aircraft/5_way_1_shot_aircraft_sampling_log.json
+    domain_info: aircraft variant
+    resolve_mode: prefixed_or_flat
+  domain:
+    images_path: data/DomainNet
+    sampling_log: episode_logs/domain/5_way_1_shot_domainnet_sampling_log.json
+    domain_info:
+    resolve_mode: prefixed_or_flat
+  lego:
+    images_path: data/lego
+    sampling_log: episode_logs/lego/5_way_1_shot_lego_sampling_log.json
+    domain_info: Lego brick type
+    resolve_mode: prefixed_or_flat
+  butterfly:
+    images_path: data/butterfly
+    sampling_log: episode_logs/butterfly/5_way_1_shot_butterfly_sampling_log.json
+    domain_info: insect species
+    resolve_mode: prefixed_or_flat
+  industrial:
+    images_path: data/IndustrialDataSet/Test_Dataset/images
+    sampling_log: episode_logs/industrial/5_way_1_shot_industrial_sampling_log.json
+    domain_info: industrial product
+    resolve_mode: prefixed_or_flat

@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local data/model artifacts.
+data/*
+!data/.gitkeep
+!data/README.md
+cache/*
+!cache/.gitkeep
+
+# Runtime prediction logs. Episode sampling logs are intentionally tracked.
+episode_logs/runs/
+
+# Local environment files.
+.env
+.venv/
+venv/
