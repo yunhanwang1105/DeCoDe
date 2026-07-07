@@ -13,9 +13,13 @@
 
 <p><em>Tübingen AI Center, University of Tübingen, Germany</em></p>
 
-<p>Official repository for the ECCV 2026 paper.</p>
+<p>Official repository for the DeCoDe paper at ECCV 2026.</p>
 
-<p><a href="https://arxiv.org/abs/2607.00125"><strong>Paper</strong></a></p>
+<p>
+  <a href="https://yunhanwang1105.github.io/publications/DeCoDe/"><img src="https://img.shields.io/badge/Project_Page-Page-64fefe" alt="Project Page"></a>
+  &emsp;
+  <a href="https://arxiv.org/abs/2607.00125"><img src="https://img.shields.io/badge/arXiv-PDF-a92225" alt="arXiv"></a>
+</p>
 
 </div>
 
