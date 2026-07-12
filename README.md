@@ -16,7 +16,7 @@
 <p>Official repository for the DeCoDe paper at ECCV 2026.</p>
 
 <p>
-  <a href="https://yunhanwang1105.github.io/publications/DeCoDe/"><img src="https://img.shields.io/badge/Project_Page-Page-5b5f97" alt="Project Page"></a>
+  <a href="https://yunhanwang1105.github.io/publications/DeCoDe/"><img src="https://img.shields.io/badge/Project_Page-Page-87cefa" alt="Project Page"></a>
   &emsp;
   <a href="https://arxiv.org/abs/2607.00125"><img src="https://img.shields.io/badge/arXiv-PDF-a92225" alt="arXiv"></a>
 </p>
